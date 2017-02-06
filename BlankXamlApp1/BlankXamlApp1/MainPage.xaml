@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:conv="clr-namespace:BlankXamlApp1.Converters;assembly=BlankXamlApp1"
+             x:Class="BlankXamlApp1.MainPage"
+             BindingContext="{Binding MainViewModel, Source={StaticResource ViewModelLocator}}">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <conv:AgeToStringConverter x:Key="AgeToStringConverter"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <StackLayout>
+    <Entry Text="{Binding FirstName, Mode=TwoWay}" HorizontalOptions="Center" />
+    <Label Text="{Binding FirstName, Mode=OneWay}" HorizontalOptions="Center" />
+    <Entry Text="{Binding Age, Mode=TwoWay}" HorizontalOptions="Center" />
+    <Label Text="{Binding Age, Mode=OneWay}" HorizontalOptions="Center" />
+    <Label Text="{Binding Age, Converter={StaticResource AgeToStringConverter}}" HorizontalOptions="Center" />
+    <Button Command="{Binding HelloWorldCommand}" CommandParameter="{Binding FirstName}" Text="Hello World"></Button>
+  </StackLayout>
+</ContentPage>
